@@ -1,0 +1,74 @@
+# ============================================================
+#  AD-1 — .gitignore
+# ============================================================
+
+# --- CAD / 3D files: NEVER PUBLISH ---------------------------
+*.f3d
+*.f3z
+*.step
+*.stp
+*.stl
+*.3mf
+*.obj
+*.iges
+*.igs
+*.sldprt
+*.sldasm
+*.gcode
+*.bgcode
+
+# --- Copyrighted papers / documents --------------------------
+Articles/
+*.pdf
+!docs/**/*.pdf
+
+# --- macOS ---------------------------------------------------
+.DS_Store
+.AppleDouble
+._*
+
+# --- draw.io (temporary files) -------------------------------
+*.bkp
+.$*
+*.drawio.dtmp
+
+# --- STM32 firmware (STM32CubeIDE / CMake / PlatformIO) ------
+build/
+Debug/
+Release/
+*.o
+*.d
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+.pio/
+.metadata/
+.settings/
+*.launch
+
+# --- Python (simulation, scripts) ----------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# --- ROS 2 (RDK X5 companion computer) -----------------------
+install/
+log/
+
+# --- MATLAB / Simulink ---------------------------------------
+*.asv
+slprj/
+*.slxc
+*.mexmaci64
+
+# --- Editors -------------------------------------------------
+.vscode/
+.idea/
+
+# --- Secrets -------------------------------------------------
+.env
+*.key
