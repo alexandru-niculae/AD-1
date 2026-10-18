@@ -129,6 +129,12 @@ AD-1/
 
 ---
 
+## License
+
+© 2026 Alexandru Niculae & Vladimir Grigoriev — **All rights reserved.** This repository is published for portfolio purposes only; no license is granted to reuse its contents. See [`LICENSE`](LICENSE).
+
+---
+
 ## Authors
 
 **Alexandru Niculae** — Robotics student
