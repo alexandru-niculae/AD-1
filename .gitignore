@@ -32,7 +32,10 @@ Articles/
 .$*
 *.drawio.dtmp
 
-# --- STM32 firmware (STM32CubeIDE / CMake / PlatformIO) ------
+# --- ESP32-S3 firmware (ESP-IDF / PlatformIO) ---------------
+sdkconfig.old
+managed_components/
+dependencies.lock
 build/
 Debug/
 Release/
