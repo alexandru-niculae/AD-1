@@ -8,8 +8,9 @@
   <img alt="Status" src="https://img.shields.io/badge/status-in%20development-orange">
 </p>
 
-<!-- TODO: hero render from Fusion (media/renders/hero.png) -->
-<!-- <p align="center"><img src="media/renders/hero.png" width="800"></p> -->
+<p align="center">
+  <img src="media/renders/hero.png" alt="AD-1 render" width="800">
+</p>
 
 ---
 
@@ -27,6 +28,27 @@ while yaw stability is passive, provided by vertical fins.
 1. **Phase 1 — Manual flight:** RC-piloted test flights (EDF throttle + elevons) to validate the airframe and propulsion.
 2. **Phase 2 — Stabilised flight:** custom flight controller running an **INDI** attitude controller.
 3. **Phase 3 — Autonomy:** guidance, navigation and onboard vision (camera + embedded AI on the RDK X5).
+
+---
+
+## Gallery
+
+### Printed & assembled airframe
+
+<p align="center">
+  <img src="media/photos/airframe_top.jpg" alt="Assembled airframe, top view" width="32%">
+  <img src="media/photos/airframe_front.jpg" alt="Assembled airframe, front view" width="32%">
+  <img src="media/photos/airframe_rear.jpg" alt="Assembled airframe, rear view" width="32%">
+</p>
+
+### CAD
+
+<p align="center">
+  <img src="media/renders/top.png" alt="Top view render" width="49%">
+  <img src="media/renders/exploded.png" alt="Exploded view: EDF, ESC, battery, electronics and camera head" width="49%">
+</p>
+
+<p align="center"><i>Left: top view of the double-delta planform. Right: exploded view showing EDF, ESC, battery, flight electronics and camera head integration.</i></p>
 
 ---
 
