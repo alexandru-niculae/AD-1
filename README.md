@@ -6,8 +6,6 @@
 
 <p align="center">
   <img alt="Status" src="https://img.shields.io/badge/status-in%20development-orange">
-  <img alt="Control" src="https://img.shields.io/badge/control-INDI-blue">
-  <img alt="Propulsion" src="https://img.shields.io/badge/propulsion-EDF%206S-lightgrey">
 </p>
 
 <!-- TODO: hero render from Fusion (media/renders/hero.png) -->
@@ -17,7 +15,7 @@
 
 ## Overview
 
-**AD-1** is a personal R&D project: designing, building and flying a double-delta flying wing
+**AD-1** is an academic R&D project carried out by a team of two students: designing, building and flying a double-delta flying wing
 propelled by an electric ducted fan (EDF), with **every layer developed in-house** —
 from the 3D-printed airframe to the flight controller and its control law.
 
@@ -36,22 +34,9 @@ while yaw stability is passive, provided by vertical fins.
 
 ### Attitude control loop (pitch / roll)
 
-```mermaid
-flowchart LR
-    G["Outer loop<br/>(guidance)"] -- "θ_ref" --> S1(("Σ"))
-    IMU["IMU<br/>gyro + accel"] -- "ω, a" --> CF["Complementary<br/>filter"]
-    IMU -- "ω raw" --> BW["Butterworth<br/>low-pass"]
-    CF -- "θ̂" --> S1
-    S1 -- "ε" --> K1["K₁"]
-    BW -- "ω_f" --> K2["K₂"]
-    BW -- "ω_f" --> D["d/dt"]
-    K1 --> S2(("Σ"))
-    K2 -- "−" --> S2
-    S2 -- "ω̇_des" --> S3(("Σ"))
-    D -- "ω̇_f" --> S3
-    S3 -- "ω̇_des − ω̇_f" --> INDI["INDI"]
-    INDI -- "δ_cmd" --> EL["Elevons<br/>(servos)"]
-```
+<p align="center">
+  <img src="docs/architecture/control_architecture.drawio.svg" alt="AD-1 attitude control architecture" width="100%">
+</p>
 
 **Control law**
 
@@ -64,7 +49,7 @@ $$\delta_{cmd} = \delta_0 + G^{-1}\,(\nu - \dot{\omega}_f)$$
   measured angular acceleration, making the controller robust to model uncertainty — well suited to a
   flying wing whose aerodynamics are hard to model accurately.
 
-Full diagram: [`docs/architecture/`](docs/architecture/) · Background papers: [`docs/references.md`](docs/references.md)
+Editable diagram: [`docs/architecture/`](docs/architecture/) · Background papers: [`docs/references.md`](docs/references.md)
 
 ---
 
@@ -73,17 +58,18 @@ Full diagram: [`docs/architecture/`](docs/architecture/) · Background papers: [
 | Subsystem | Component |
 |---|---|
 | Airframe | Double-delta wing, 3D-printed in lightweight PLA (15 % gyroid infill) |
-| Propulsion | EDF (251 g) + Hobbywing 120A V4 ESC |
-| Power | 6S LiPo battery (630 g) |
+| Propulsion | EDF + Hobbywing 120A V4 ESC |
+| Power | 6S LiPo battery |
 | Actuators | High-torque servos on two elevons |
-| Flight controller | Custom board — ESP32-S3 + IMU *(in development)* |
+| Flight controller | Custom board — ESP32-S3 + IMU, with an integrated PDB (power distribution board) feeding all subsystems *(in development)* |
+| Navigation | GPS M100-5883 (GPS + compass) |
 | Companion computer | D-Robotics RDK X5 (vision, embedded AI, autonomy) |
 
 ## Tech stack
 
 **CAD** Fusion · **Fabrication** FDM 3D printing (PLA-LW, PETG) · **Firmware** C/C++ on ESP32-S3 (ESP-IDF, FreeRTOS) ·
 **Control** INDI, complementary & Butterworth filtering · **Simulation** MATLAB / Simulink ·
-**Companion** RDK X5, ROS 2 · **Docs** draw.io, Markdown
+**Companion** RDK X5, ROS 2, Python · **Docs** draw.io, Markdown
 
 ---
 
@@ -91,7 +77,7 @@ Full diagram: [`docs/architecture/`](docs/architecture/) · Background papers: [
 
 - [x] Airframe design in Fusion (wing, fuselage, EDF intake & mount, electronics tray)
 - [x] Control architecture (filtering + INDI attitude loop)
-- [ ] Airframe printing & assembly
+- [x] Airframe printing & assembly
 - [ ] Propulsion bench test (thrust, current, temperature)
 - [ ] Simulink model & INDI tuning
 - [ ] Flight controller firmware (IMU drivers, filtering, INDI, servo output)
@@ -121,7 +107,10 @@ AD-1/
 
 ---
 
-## Author
+## Authors
 
 **Alexandru Niculae** — Robotics student
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Alexandru%20Niculae-0A66C2?logo=linkedin)](https://www.linkedin.com/in/alexandru-niculae-11647227a)
+
+**Vladimir Grigoriev** — Robotics student
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Vladimir%20Grigoriev-0A66C2?logo=linkedin)](https://www.linkedin.com/in/vladimir-grigoriev-nice/)
